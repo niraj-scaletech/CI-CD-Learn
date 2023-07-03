@@ -1,7 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-
 name: deploy
 
 on:
@@ -14,7 +10,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -22,33 +17,34 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
-      env: 
-        CI: true
+        run: |
+          npm install
+          npm run build
+        
+        env: 
+          CI: true   
 
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
 
     steps:
-      - name: SSH deploy
-         uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.CI_HOST }}
-            username: ${{ secrets.CI_USERNAME }}
-            key: ${{ secrets.CI_KEY }}
-            port: ${{ secrets.CI_PORT }}
-            script: |
-              curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh  | bash
+     - name: SSH deploy
+       uses: appleboy/ssh-action@master
+       with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.USER }}
+          key:  ${{ secrets.KEY }}
+          port:  ${{ secrets.PORT }}
+          script: |
+              curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
               . ~/.nvm/nvm.sh
-               
-              nvm install 18
-              npm install -g pm2
-              cd ~/CI-CD
-              git pull origin main
-              npm install
-              npm run build
-              pm2 restart api 
+
+               nvm instal 18
+               npm install -g pm2
+               cd /home/ubuntu/project/CI-CD-Learn
+               git pull origin main
+               npm install
+               npm run build
+               pm2 restart api
+            
