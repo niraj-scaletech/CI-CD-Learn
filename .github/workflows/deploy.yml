@@ -43,5 +43,5 @@ jobs:
                git pull origin main
                npm install
                npm run build
-               pm2 restart api
+               pm2 restart ci-cd
             
