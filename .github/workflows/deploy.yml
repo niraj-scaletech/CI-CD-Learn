@@ -18,18 +18,17 @@ jobs:
       - run: |
             npm install
             npm run build
-      
       - name: Deploy on aws
         uses: easingthemes/ssh-deploy@main
         env:
-          key: ${{ secrets.CI_KEY }}
-          host: ${{ secrets.CI_HOST }}
-          username: ${{ secrets.CI_USERNAME }}
-          port: ${{ secrets.CI_PORT }}
+          SSH_PRIVATE_KEY: ${{ secrets.CI_KEY }}
+          REMOTE_HOST: ${{ secrets.CI_HOST }}
+          REMOTE_USER: ${{ secrets.CI_USERNAME }}
           ARGS: "-tt -i"
           script_stop: true
-          script: |
+          SCRIPT: |
             echo "successfully connected"
+          run: |
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
             echo "INSIDE CI-CD-Learn"
 
