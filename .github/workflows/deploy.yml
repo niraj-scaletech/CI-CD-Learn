@@ -24,7 +24,7 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "build"
         run: |
-            ssh -tt -i ${{ secrets.KEY }} ubuntu@ec2-65-2-182-103.ap-south-1.compute.amazonaws.com << EOF
+            ssh -tt -i ${{ env.key }} ubuntu@ec2-65-2-182-103.ap-south-1.compute.amazonaws.com << EOF
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
 
             curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
