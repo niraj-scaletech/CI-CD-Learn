@@ -24,7 +24,6 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "build"
         run: |
-            cd ~/Downloads
             ssh -tt -i ${{ secrets.KEY }} ubuntu@ec2-65-2-182-103.ap-south-1.compute.amazonaws.com << EOF
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
 
