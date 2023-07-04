@@ -30,6 +30,6 @@ jobs:
             echo "INSIDE CI-CD-Learn"
           run: git pull origin main
           run: npm install
-          echo "taken pull from main"
+            echo "taken pull from main"
           run: pm2 restart 1
             echo "server restart"
