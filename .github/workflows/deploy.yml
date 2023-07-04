@@ -43,6 +43,7 @@ jobs:
             npm run build
 
             echo "taken pull from main"
-
-            pm2 restart ci-cd-learn
+           
+            pm2 stop ci-cd-learn
+            pm2 start ci-cd-learn
             echo "server restart"
