@@ -26,4 +26,5 @@ jobs:
           ARGS: "-tt -i"
           SCRIPT_BEFORE: |
             echo "successfully connected"
-          run: pm2 restart 1
+          SCRIPT_AFTER: |
+            pm2 restart 1
