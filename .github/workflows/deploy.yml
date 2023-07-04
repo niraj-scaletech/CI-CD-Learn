@@ -46,4 +46,4 @@ jobs:
            
             pm2 stop ci-cd-learn
             pm2 start ci-cd-learn
-            echo "server restart"
+            echo "server restarted"
