@@ -29,10 +29,10 @@ jobs:
       - name: SSH deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
+          host: 127.0.0.1
+          username: niraj-scaletech
+          key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCmDXCqfuM1PWqIbLMwxe9W41p7cy5bvYwfUYQE4nszeuqFvygu8JkfKIb+56aPXlGQXqgp6GLS68aihANf8g4bfuknPeLLZD5Ip6PhLUNKIa3N/fb+4TIx9NKo0AoE3itKG8PCanZ5bL4Hl942e4kVL0+gmUhOT6gzwD9sNmOqMnNcmxTrYG+n8cmu7+uthEbfyiMfLMWCLXyhMRr/uzNkTsSf/nQBx+Ao7RCgauouBP6UlN01cxHyOw1dMh5Bv/BtEW95uaYBvFvqDIfAsGCIO6YJMMW9PyyDAV1xf97nFfAgmkb+mpI0UsNvuDQNJVlndoo1nh7eOhqLMHoymrhlu1bbeJqpKwj8jWr1YxmBuT04J6OV8vQcoUdDpfSuTzJ3QtL4HQln029qlseeAosBXGXRI1d5lMKtvf44h3VcE9MV2Xv0HGvCpUuEseKaYAUlts02jI0bLaxF/RIwFG7Y/Ux/S6VxBYbS4miOdzYbSh1bKzQ8GurSljpIL29IUzE9hIsJxQOzmn+U6aDWTgNVxaBb1SipD22GiYFA9JXNSMpsUjrHeaudWpGum4SUBV08j1aaccRjj0wLEPUHK1ltIk598AZqMhYakTfqL+ydeoEy+M5QGRPW3+NUH5HM55Cd35FEs7vzqgnuYmUDy4BbELR/3TJR8nkO0Xx6v28Ykw== niraj.visavadiya@scaletech.xyz
+          port: 3000
           script: |
             curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
             . ~/.nvm/nvm.sh
