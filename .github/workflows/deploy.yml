@@ -18,14 +18,17 @@ jobs:
       - run: |
             npm install
             npm run build
+      
       - name: Deploy on aws
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.CI_KEY }}
-          REMOTE_HOST: ${{ secrets.CI_HOST }}
-          REMOTE_USER: ${{ secrets.CI_USERNAME }}
+          key: ${{ secrets.CI_KEY }}
+          host: ${{ secrets.CI_HOST }}
+          username: ${{ secrets.CI_USERNAME }}
+          port: ${{ secrets.CI_PORT }}
           ARGS: "-tt -i"
-          SCRIPT: |
+          script_stop: true
+          script: |
             echo "successfully connected"
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
             echo "INSIDE CI-CD-Learn"
@@ -44,4 +47,5 @@ jobs:
             echo "taken pull from main"
            
             pm2 restart 1
+
             echo "server restart"
