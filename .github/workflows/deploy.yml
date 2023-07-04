@@ -30,6 +30,7 @@ jobs:
              nvm install 18
              nvm use 18
              npm install -g pm2
+             pwd
              cd /home/ubuntu/project/CI-CD-Learn
              git pull origin main
              npm install
