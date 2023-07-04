@@ -27,7 +27,7 @@ jobs:
           ARGS: "-tt -i"
           SCRIPT: |
             echo "successfully connected"
-          run: |
+          SCRIPT: |
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
             echo "INSIDE CI-CD-Learn"
 
@@ -44,6 +44,5 @@ jobs:
 
             echo "taken pull from main"
            
-            pm2 stop ci-cd-learn
-            pm2 start ci-cd-learn
-            echo "server restarted"
+            pm2 restart 1
+            echo "server restart"
