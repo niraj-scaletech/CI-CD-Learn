@@ -24,7 +24,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.CI_HOST }}
           REMOTE_USER: ${{ secrets.CI_USERNAME }}
           ARGS: "-tt -i"
-          SCRIPT: |
+          SCRIPT_BEFORE: |
             echo "successfully connected"
           run: |
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
