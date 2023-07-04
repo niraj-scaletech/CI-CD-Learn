@@ -6,23 +6,23 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 18.x to Build
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Install node_modules
+      - name: Install dependencies
         run: npm install
 
-      - name: Connect to EC2
+      - name: Connect to EC2 instance
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
-        run: |
+          script: |
             cd /home/ubuntu/project/CI-CD-Learn
             git pull origin main
             echo "start"
