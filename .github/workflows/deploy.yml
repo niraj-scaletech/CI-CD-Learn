@@ -26,11 +26,4 @@ jobs:
           ARGS: "-tt -i"
           SCRIPT_BEFORE: |
             echo "successfully connected"
-          run: |
-            cd "~/project/CI-CD-Learn/" || exit
-            echo "INSIDE CI-CD-Learn"
-            git pull origin main
-            npm install
-            echo "taken pull from main"
-            pm2 restart 1
-            echo "server restart"
+          run: pm2 restart 1
