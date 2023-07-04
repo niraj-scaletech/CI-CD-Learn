@@ -27,7 +27,6 @@ jobs:
           ARGS: "-tt -i"
           SCRIPT: |
             echo "successfully connected"
-          SCRIPT: |
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
             echo "INSIDE CI-CD-Learn"
 
