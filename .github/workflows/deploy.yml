@@ -24,15 +24,23 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "build"
         run: |
+            cd ~/Downloads
+            ssh -tt -i ${{ secrets.KEY }} ubuntu@ec2-65-2-182-103.ap-south-1.compute.amazonaws.com << EOF
+            cd "/home/ubuntu/project/CI-CD-Learn" || exit
+
             curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
             . ~/.nvm/nvm.sh
+             
+            nvm install 18
+            nvm use 18
+            npm install -g pm2
 
-             nvm install 18
-             nvm use 18
-             npm install -g pm2
-             pwd
-             cd /home/ubuntu/project/CI-CD-Learn
-             git pull origin main
-             npm install
-             npm run build
-             pm2 restart ci-cd
+            git pull origin main 
+            
+            npm install
+            npm run build
+            
+            pm2 restart ci-cd-learn
+            echo "server restart"
+            exit 
+            EOF 
