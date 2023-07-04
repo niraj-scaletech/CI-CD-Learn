@@ -22,7 +22,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
-          run: |
+        run: |
             cd /home/ubuntu/project/CI-CD-Learn
             git pull origin main
             echo "start"
