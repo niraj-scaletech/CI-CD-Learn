@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 18.x to Build
@@ -25,10 +24,9 @@ jobs:
           REMOTE_HOST: ${{ secrets.CI_HOST }}
           REMOTE_USER: ${{ secrets.CI_USERNAME }}
           ARGS: "-tt -i"
-          script_stop: true
           SCRIPT: |
             echo "successfully connected"
-          run: |
+        run: |
             cd "/home/ubuntu/project/CI-CD-Learn" || exit
             echo "INSIDE CI-CD-Learn"
 
